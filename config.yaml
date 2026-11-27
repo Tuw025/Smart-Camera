@@ -1,0 +1,35 @@
+camera:
+  name: "Cam ngoài sân"
+  rtsp_url: "rtsp://localhost:8554/cam_c200_2"
+  reconnect_interval_seconds: 5
+
+mode:
+  active: "AWAY"                  # "AWAY" | "HOME"
+
+detector:
+  model_path: "yolo11s.pt"
+  device: "cuda:0"                # Tự fallback sang "cpu" nếu không có CUDA
+  imgsz: 640
+  confidence_threshold: 0.5
+  inference_fps: 5
+
+behavior:
+  away:
+    target_classes: ["person"]
+    consecutive_frames: 3
+    roi_polygon: null             # null = toàn khung hình; hoặc [[x1, y1], [x2, y2], ...] tỉ lệ [0.0..1.0]
+
+notifier:
+  enabled: true
+  cooldown_seconds: 60
+  image_expiration_seconds: 600   # Cho ImgBB (bỏ qua nếu Zalo hỗ trợ upload trực tiếp)
+  message_template: "⚠️ Phát hiện {count} người tại {camera_name} lúc {timestamp}"
+
+display:
+  show_window: true
+
+logging:
+  level: "INFO"
+  log_dir: "logs"
+  max_bytes: 5242880              # 5 MB
+  backup_count: 3

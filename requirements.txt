@@ -1,0 +1,12 @@
+# Python 3.12 — cài vào D:\Camera\src\.venv
+# PyTorch build CUDA 12.6 (Driver 560.94 không hỗ trợ build cu128 trở lên).
+# Nếu cài thủ công từng bước: cài torch/torchvision từ index cu126 TRƯỚC, rồi mới cài ultralytics.
+--extra-index-url https://download.pytorch.org/whl/cu126
+
+torch==2.14.1+cu126
+torchvision==0.29.1+cu126
+ultralytics==8.4.220
+opencv-python==5.1.0.95
+PyYAML==6.0.4
+python-dotenv==1.2.4
+requests==2.34.2
